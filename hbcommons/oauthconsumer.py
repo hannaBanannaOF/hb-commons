@@ -20,7 +20,7 @@ class HannaBanannaOAuth2(BaseOAuth2):
         return {
             'id': response.get('id'),
             'email': response.get('email'),
-            'nickname': response.get('username') or '',
+            'nickname': response.get('nickname') or '',
             'first_name': response.get('first_name') or '',
             'last_name': response.get('last_name') or '',
             'photo': response.get('photo') or ''
