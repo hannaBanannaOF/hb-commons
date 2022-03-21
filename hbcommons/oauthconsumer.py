@@ -4,7 +4,7 @@ from django.conf import settings
 class HannaBanannaOAuth2(BaseOAuth2):
     """Personalized OAuth authentication backend"""
     name = 'hannabananna'
-    defaultUrl = settings.HANNABANNA_AUTH_URL
+    defaultUrl = settings.HANNABANANNA_AUTH_URL
     AUTHORIZATION_URL = '{0}/authorize/'.format(defaultUrl)
     ACCESS_TOKEN_URL = '{0}/o/token/'.format(defaultUrl)
     ACCESS_TOKEN_METHOD = 'POST'
