@@ -17,8 +17,18 @@ Quick start - DEVELOPMENT
         'hbcommons',
     ]
 ```
+
 4. Configure your settings.py::
 ```python
     AUTH_USER_MODEL = 'hbcommons.Usuario'
 ```
-5. Run ``python manage.py migrate`` to create the models.
+
+5. To use the consumer, use it like the following in the settings.py::
+```python
+    SOCIAL_AUTH_HANNABANANNA_KEY = "<your_key>"
+    SOCIAL_AUTH_HANNABANANNA_SECRET = "<your_secret>"
+
+    HANNABANNA_AUTH_URL = "<your_hbauth_backend>"
+```
+
+6. Run ``python manage.py migrate`` to create the models.
