@@ -24,7 +24,7 @@ class AbstractBaseModel(models.Model):
     class Meta:
         abstract = True
 
-class UsuarioAbstract(AbstractBaseUser):
+class UsuarioAbstract(AbstractBaseUser, AbstractBaseModel):
     email = models.EmailField('Email', unique=True, blank=False, null=False)
     password = models.CharField('Senha', blank=False, null=False, max_length=250)
     is_active = models.BooleanField(default=True)
@@ -58,7 +58,7 @@ class UsuarioAbstract(AbstractBaseUser):
     class Meta:
         abstract = True
 
-class Usuario(UsuarioAbstract, AbstractBaseModel):
+class Usuario(UsuarioAbstract):
     
     class Meta:
         verbose_name = 'usuário'
