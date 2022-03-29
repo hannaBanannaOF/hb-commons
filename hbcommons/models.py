@@ -24,7 +24,7 @@ class AbstractBaseModel(models.Model):
     class Meta:
         abstract = True
 
-class Usuario(AbstractBaseUser, AbstractBaseModel):
+class UsuarioAbstract(AbstractBaseUser):
     email = models.EmailField('Email', unique=True, blank=False, null=False)
     password = models.CharField('Senha', blank=False, null=False, max_length=250)
     is_active = models.BooleanField(default=True)
@@ -55,6 +55,8 @@ class Usuario(AbstractBaseUser, AbstractBaseModel):
     def has_module_perms(self, app_label):
         return True
 
+class Usuario(UsuarioAbstract, AbstractBaseModel):
+    
     class Meta:
         verbose_name = 'usuário'
         verbose_name_plural = 'usuários'
