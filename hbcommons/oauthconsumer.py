@@ -7,6 +7,7 @@ class HannaBanannaOAuth2(BaseOAuth2):
     defaultUrl = settings.HANNABANANNA_AUTH_URL
     AUTHORIZATION_URL = '{0}/authorize/'.format(defaultUrl)
     ACCESS_TOKEN_URL = '{0}/o/token/'.format(defaultUrl)
+    AUTH_EXTRA_ARGUMENTS = settings.HANNABANANNA_CODE_VERIFIER
     ACCESS_TOKEN_METHOD = 'POST'
     EXTRA_DATA = [
         ('id', 'id'),
