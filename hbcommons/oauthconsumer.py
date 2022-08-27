@@ -7,7 +7,6 @@ class HannaBanannaOAuth2(BaseOAuth2):
     defaultUrl = settings.HANNABANANNA_AUTH_URL
     AUTHORIZATION_URL = '{0}/authorize/'.format(defaultUrl)
     ACCESS_TOKEN_URL = '{0}/o/token/'.format(defaultUrl)
-    AUTH_EXTRA_ARGUMENTS = settings.HANNABANANNA_CODE_VERIFIER
     ACCESS_TOKEN_METHOD = 'POST'
     EXTRA_DATA = [
         ('id', 'id'),
@@ -17,6 +16,7 @@ class HannaBanannaOAuth2(BaseOAuth2):
         ('last_name', 'last_name'),
         ('photo', 'photo')
     ]
+    
     def get_user_details(self, response):
         return {
             'id': response.get('id'),
@@ -29,3 +29,8 @@ class HannaBanannaOAuth2(BaseOAuth2):
 
     def user_data(self, access_token, *args, **kwargs):
         return self.get_json('{0}/user/'.format(self.defaultUrl), headers={'Authorization': 'Bearer %s' % access_token})
+
+    def auth_complete_params(self, state=None):
+        params = super().auth_complete_params(state)
+        params.update({'code_verifier': settings.HANNABANANNA_CODE_VERIFIER})
+        return params
